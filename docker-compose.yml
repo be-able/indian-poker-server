@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.2'
 services:
   rabbitmq:
     image: 'rabbitmq:management'
@@ -31,6 +31,31 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
     volumes:
       - '~/docker/${PROJECT_NAME}/data/db:/data/db'
-
-
+  spring-boot-game:
+    build: ./game
+    ports:
+      - '9091:9090'
+    depends_on:
+      - mariadb
+    networks:
+      - indian_net
+  spring-boot-logging:
+    build: ./logging
+    ports:
+      - '9092:9090'
+    depends_on:
+      - mariadb
+    networks:
+      - indian_net
+  spring-boot-security:
+    build: ./logging
+    ports:
+      - '9093:9090'
+    depends_on:
+      - mariadb
+    networks:
+      - indian_net
+networks:
+  indian_net:
+    driver: bridge
 
