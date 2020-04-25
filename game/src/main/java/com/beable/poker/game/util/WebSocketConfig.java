@@ -1,4 +1,4 @@
-package com.beable.poker.game.utils;
+package com.beable.poker.game.util;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

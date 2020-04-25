@@ -1,0 +1,39 @@
+spring:
+  profiles:
+    active: core
+
+---
+
+server:
+  port: 8080
+spring:
+  profiles: core
+  datasource:
+    url: 'jdbc:mariadb://localhost:33060/logging?useUnicode=true&characterEncoding=utf8mb4'
+    username: root
+    password: ${env.MYSQL_PASSWORD}
+    driver-class-name: 'org.mariadb.jdbc.Driver'
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: 'org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy'
+      ddl-auto: update
+    database-platform: 'org.hibernate.dialect.MariaDB103Dialect'
+    generate-ddl: true
+    show-sql: true
+  task:
+    execution:
+      pool:
+        core-size: 8
+        max-size: 8
+
+---
+
+server:
+  port: 9090
+spring:
+  profiles: deploy
+  datasource:
+    url: 'jdbc:mysql://mariadb:3306/logging?useUnicode=true&characterEncoding=utf8mb4'
+
+

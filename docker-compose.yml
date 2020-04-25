@@ -18,10 +18,15 @@ services:
       - '33060:3306'
     environment:
       - 'MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}'
+      - 'MYSQL_ROOT_HOST=%'
       - 'TZ="Asia/Seoul"'
+      - 'MYSQL_DATABASE=game'
     volumes:
+      - './mysql/conf.d:/etc/mysql/conf.d'
+      - './mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:rw'
       - '~/docker/${PROJECT_NAME}/var/lib/mysql:/var/lib/mysql'
-      - '~/docker/${PROJECT_NAME}/var/log/maria:/var/log/maria'
+    networks:
+      - indian_net
   mongodb:
     image: 'mongo:4.2.3'
     ports:
@@ -48,7 +53,7 @@ services:
     networks:
       - indian_net
   spring-boot-security:
-    build: ./logging
+    build: ./security
     ports:
       - '9093:9090'
     depends_on:
