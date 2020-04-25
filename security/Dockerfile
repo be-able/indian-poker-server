@@ -1,4 +1,4 @@
-FROM gradle:6.0.1-jdk13
+FROM gradle:6.0.1-jdk11
 
 COPY gradlew .
 COPY gradle gradle
