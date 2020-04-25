@@ -2,9 +2,9 @@ package com.beable.pocker.security.controller;
 
 import com.beable.pocker.security.dto.SignInRequest;
 import com.beable.pocker.security.dto.SignInResponse;
-import com.beable.pocker.security.error.SecException;
-import com.beable.pocker.security.error.SecExceptionType;
+import com.beable.pocker.security.spring.Response;
 import lombok.NonNull;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,24 +16,23 @@ public class SignController {
 	
 	@NonNull
 	@PostMapping(path = "/sign-in")
-	public SignInResponse signIn(@RequestBody SignInRequest request) {
+	public ResponseEntity<SignInResponse> signIn(@RequestBody SignInRequest request) {
 		
-		return new SignInResponse();
+		return Response.okJson(new SignInResponse());
 	}
 	
 	@NonNull
 	@PostMapping(path = "/sign-out")
-	public String signOut(String id, String pwd) {
+	public ResponseEntity<String> signOut(String id, String pwd) {
 		
-		throw new SecException(SecExceptionType.SIGN_FAILED);
+		return Response.okJson("succeed");
 	}
 	
 	@NonNull
 	@PostMapping(path = "/sign-up")
-	public String signUp(String id, String pwd) {
+	public ResponseEntity<String> signUp(String id, String pwd) {
 		
-		throw new SecException(SecExceptionType.SIGN_FAILED);
+		return Response.okJson("succeed");
 	}
-	
 	
 }
