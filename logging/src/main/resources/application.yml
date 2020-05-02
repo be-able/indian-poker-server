@@ -21,6 +21,11 @@ spring:
     database-platform: 'org.hibernate.dialect.MariaDB103Dialect'
     generate-ddl: true
     show-sql: true
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    virtual-host: /
   task:
     execution:
       pool:
@@ -32,6 +37,8 @@ spring:
 server:
   port: 9090
 spring:
+  rabbitmq:
+    host: rabbitmq
   profiles: deploy
   datasource:
     url: 'jdbc:mysql://mariadb:3306/logging?useUnicode=true&characterEncoding=utf8mb4'

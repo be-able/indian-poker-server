@@ -1,16 +1,23 @@
 version: '3.2'
 services:
   rabbitmq:
-    image: 'rabbitmq:management'
+    image: 'rabbitmq:3-management'
     hostname: rabbitmq
     environment:
       RABBITMQ_ERLANG_COOKIE: ""
+      HOSTNAME: rabbitmq
       RABBITMQ_DEFAULT_VHOST: /
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
     ports:
       - '5672:5672'
       - '15672:15672'
     labels:
-      NAME: rabbmitmq
+      NAME: rabbitmq
+    volumes:
+      - '~/docker/${PROJECT_NAME}/var/lib/rabbitmq:/var/lib/rabbitmq'
+    networks:
+      - indian_net
   mariadb:
     image: 'mariadb:10.4.12'
     restart: always
@@ -50,6 +57,7 @@ services:
       - '9092:9090'
     depends_on:
       - mariadb
+      - rabbitmq
     networks:
       - indian_net
   spring-boot-security:
