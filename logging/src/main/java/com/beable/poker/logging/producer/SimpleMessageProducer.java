@@ -16,7 +16,7 @@ public class SimpleMessageProducer {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    @Scheduled(cron = "0/1 * * * * *")
+    @Scheduled(cron = "0 0/1 * * * *")
     public void sendMessage() {
         for (int i = 0; i < 1000; i++) {
             rabbitTemplate.convertAndSend(RabbitMQConfiguration.EXCHANGE_NAME, "foo.bar.baz", "Hello Message!");
