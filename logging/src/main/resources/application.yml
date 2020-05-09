@@ -23,8 +23,8 @@ spring:
     show-sql: true
   rabbitmq:
     host: localhost
-    username: guest
-    password: guest
+    username: admin
+    password: ${env.RABBITMQ_PASSWORD}
     virtual-host: /
   task:
     execution:
@@ -37,8 +37,6 @@ spring:
 server:
   port: 9090
 spring:
-  rabbitmq:
-    host: rabbitmq
   profiles: deploy
   datasource:
     url: 'jdbc:mysql://mariadb:3306/logging?useUnicode=true&characterEncoding=utf8mb4'
