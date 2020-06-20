@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'org.springframework.boot' version '2.2.7.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'org.asciidoctor.convert' version '1.5.8'
     id 'java'
@@ -21,6 +21,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 ext {
@@ -40,6 +41,7 @@ dependencies {
     compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.5.2'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude module: 'junit'
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
@@ -58,9 +60,14 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation('org.junit.jupiter:junit-jupiter-api')
+    testCompile('org.junit.jupiter:junit-jupiter-params')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine')
+
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.2.32'
+
 }
 
 bootRun() {

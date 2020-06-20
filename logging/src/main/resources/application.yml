@@ -22,7 +22,7 @@ spring:
     generate-ddl: true
     show-sql: true
   rabbitmq:
-    host: localhost
+    host: rabbitmq
     username: admin
     password: ${env.RABBITMQ_PASSWORD}
     virtual-host: /
