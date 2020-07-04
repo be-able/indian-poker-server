@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("v1/game")
+@RequestMapping("v1/games")
 public class GameController {
     @Autowired
     GameController(GameRepository gameRepository) {

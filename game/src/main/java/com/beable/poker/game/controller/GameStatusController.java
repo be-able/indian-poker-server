@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("/v1/game/{game_id}/game-status")
+@RequestMapping("/v1/games/{game_id}/game-status")
 public class GameStatusController {
     @GetMapping
     public ResponseEntity<GameStatus> getById(@PathVariable("game_id") final long gameId) {

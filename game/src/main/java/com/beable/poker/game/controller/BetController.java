@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("v1/game/{game_id}/round/{round_number}")
+@RequestMapping("v1/games/{game_id}")
 public class BetController {
     @Autowired
     BetController(BetRepository betRepository, RoundRepository roundRepository) {
