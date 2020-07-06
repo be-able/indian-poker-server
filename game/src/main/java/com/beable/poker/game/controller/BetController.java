@@ -30,7 +30,6 @@ public class BetController {
         round.getBetList().add(bet);
         betRepository.save(bet);
         roundRepository.save(round);
-
         return ResponseEntity.ok(bet);
     }
 }
