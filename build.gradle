@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id “org.sonarqube” version “2.8”
 }
 
 group 'com.beable'
@@ -24,6 +25,16 @@ subprojects {
         mavenLocal()
         mavenCentral()
     }
+    
+    
+    sonarqube {
+        properties {
+        property “sonar.projectKey”, “be-able_indian-poker-server”
+        property “sonar.organization”, “be-able”
+        property “sonar.host.url”, “https://sonarcloud.io”
+        property “sonar.login”, “e3ff06ab47b2359ee8db38fabfd6b1e2f1a82ba0”
+    }
+
 
     task initSourceFolders {
         sourceSets*.java.srcDirs*.each {
