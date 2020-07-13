@@ -77,7 +77,7 @@ sonarqube {
     property "sonar.projectKey", "be-able_indian-poker-server"
     property "sonar.organization", "be-able"
     property "sonar.host.url", "https://sonarcloud.io"
-    property "sonar.login", ${{ secrets.SONAR_TOKEN }}
+    property "sonar.login", "1dfdab88f1d1fd451a7b51e67af64f98b51d4a09"
   }
 }
 
