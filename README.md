@@ -1,5 +1,5 @@
 # indian-poker-server
-the marvelous game server
+the marvelous game server based on spring-boot
 ## requirements
   - Java 11
   - docker
