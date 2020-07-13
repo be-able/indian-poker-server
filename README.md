@@ -1,7 +1,7 @@
 # indian-poker-server
-the marvelous game server
+the marvelous game server based on spring-boot
 ## requirements
-  - Java 13
+  - Java 11
   - docker
 ## how to build
   - ``cp .env.example .env`` : copy example file and write .env
